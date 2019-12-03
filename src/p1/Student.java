@@ -1,26 +1,37 @@
 package p1;
 
+import java.util.Date;
+
 public class Student {
 	private String Name;
 
 
 	private int Age;
-	private String DOB;
+	private Date DOB;
 	private int ID;
-	private String username;
 	private String courses;
 	private String moduleRegisteredFor;
 	
-	 public Student(String Name, int Age, String DOB, int ID, String username, String courses, String moduleRegisteredFor) {
+	 public Student(String Name, int Age, Date DOB, int ID, String courses, String moduleRegisteredFor) {
 	        this.Name = Name;
 	        this.Age = Age;
 	        this.DOB = DOB;
 	        this.ID = ID;
-	        this.setUsername(username);
 	        this.courses = courses;
 	        this.moduleRegisteredFor = moduleRegisteredFor;
 	        	                
 	 }
+	/* public String toString() {
+	        return "Student{" +
+	                "Name='" + Name + '\'' +
+	                ", Age='" + Age + '\'' +
+	                ", DOB='" + DOB + '\'' +
+	                ", ID='" + ID + '\'' +
+	                ", courses='" + courses + '\'' +
+	                ", moduleRegisteredFor='" + moduleRegisteredFor + '\'' +
+	                '}';
+	    }
+	    */
 		public String getName() {
 			return Name;
 		}
@@ -37,12 +48,12 @@ public class Student {
 			Age = age;
 		}
 
-		public String getDOB() {
+		public Date getDOB() {
 			return DOB;
 		}
 
-		public void setDOB(String dOB) {
-			DOB = dOB;
+		public void setDOB(Date DOB) {
+			DOB = DOB;
 		}
 
 		public int getID() {
@@ -54,11 +65,10 @@ public class Student {
 		}
 		
 		public String getUsername() {
-			return username;
+			String Username = Name.concat(DOB);
+			return Username;
 		}
-		public void setUsername(String username) {
-			this.username = username;
-		}
+		
 
 		public String getCourses() {
 			return courses;
