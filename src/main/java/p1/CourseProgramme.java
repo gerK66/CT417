@@ -1,28 +1,23 @@
 package p1;
 
 import java.util.ArrayList;
-import java.util.Date;
-import javax.xml.crypto.Data;
+import org.joda.time.DateTime;
 
 public class CourseProgramme {
-	//list of modules
-	//list of students that are enrolled,
-	//academic start	date and end date.
+
 	//Start and end dates should use Joda Time classes(i.e.
 	//DateTime), which must be added as a project dependency
-	/*ArrayList<String> Course = new ArrayList<String>();
-	{
-		Course.add("CS");
-		Course.add("IT");
-		Course.add("ECE");
-	}
-	*/
+
 	
-	private Data Startdate;	
-	private Date EndDate;
+	private DateTime StartDate;	
+	private DateTime EndDate;
 	private String CourseName;
 	ArrayList<Student> students = new ArrayList<Student>();
 	ArrayList<Module> Modules = new ArrayList<Module>();
+	
+	public CourseProgramme() {
+		
+	}
 	
 	
 	public ArrayList<Student> getStudents() {
@@ -37,16 +32,11 @@ public class CourseProgramme {
 	public void setModules(ArrayList<Module> modules) {
 		Modules = modules;
 	}
-	public Data getStartdate() {
-		return Startdate;
-	}
-	public void setStartdate(Data startdate) {
-		Startdate = startdate;
-	}
-	public Date getEndDate() {
+
+	public DateTime getEndDate() {
 		return EndDate;
 	}
-	public void setEndDate(Date endDate) {
+	public void setEndDate(DateTime endDate) {
 		EndDate = endDate;
 	}
 	public String getCourseName() {
@@ -55,6 +45,21 @@ public class CourseProgramme {
 	public void setCourseName(String courseName) {
 		CourseName = courseName;
 	}
-
+	public DateTime getStartDate() {
+		return StartDate;
+	}
+	public void setStartDate(DateTime startDate) {
+		StartDate = startDate;
+	}
+	public void addModule(Module module) {
+		Modules.add(module);
+	}
+	public void addStudent(Student student) {
+		students.add(student);
+		for(int i=0;i<Modules.size();i++) {
+			Module cmod = Modules.get(i);
+			cmod.addStudent(student);
+		}
+	}
 	
 }
