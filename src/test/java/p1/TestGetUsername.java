@@ -30,24 +30,24 @@ class TestGetUsername {
 	Module ML = new Module(MLModule, MLCode);
 
 	// Student data	
-	String engStudentName = "Bob";
-	int engStudentAge = 27;
-	DateTime engStudentDoB = (new DateTime(06/06/1992));
-	int engStudentID = 10320021;
-	String engStudentCourse = "ECE";
-	String engStudentModule = "EE453";
+	private String engStudentName = "Bob";
+	private int engStudentAge = 27;
+	private DateTime engStudentDoB = (new DateTime(06/06/1992));
+	private  int engStudentID = 10320021;
+	private String engStudentCourse = "ECE";
+	private String engStudentModule = "EE453";
 	
-	Student engStudent = new Student(engStudentName, engStudentAge, engStudentDoB, engStudentID, engStudentCourse, engStudentModule);
+	private Student engStudent = new Student(engStudentName, engStudentAge, engStudentDoB, engStudentID, engStudentCourse, engStudentModule);
 
 	
-	String ITStudentName = "Gob";
-	int ITStudentAge = 24;
-	DateTime ITStudentDoB = (new DateTime(05/03/1995));
-	int ITStudentID = 10320021;
-	String ITStudentCourse = "CSIT";
-	String ITStudentModule = "CT417";
+	private String ITStudentName = "Gob";
+	private int ITStudentAge = 24;
+	private DateTime ITStudentDoB = (new DateTime(05/03/1995));
+	private int ITStudentID = 10320021;
+	private String ITStudentCourse = "CSIT";
+	private String ITStudentModule = "CT417";
 	
-	Student compSciStudent = new Student(ITStudentName, ITStudentAge, ITStudentDoB, ITStudentID, ITStudentCourse, ITStudentModule);
+	private Student compSciStudent = new Student(ITStudentName, ITStudentAge, ITStudentDoB, ITStudentID, ITStudentCourse, ITStudentModule);
 
 	
 	@Before
@@ -77,21 +77,51 @@ class TestGetUsername {
 	}
 
 	@Test
-	void testGetUserName() {
-
+	public void testGetUsername() {
 
 		// assertions
 		assertTrue(engStudent.getName().equals(engStudentName));
 		assertTrue(compSciStudent.getName().equals(ITStudentName));
 		
-		//assertTrue(engStudent.getAge().equals(engStudentAge));
-		//assertTrue(compSciStudent.getAge().equals(ITStudentAge));
-
+		assertEquals(engStudentAge, engStudent.getAge());
+		assertEquals(ITStudentAge, compSciStudent.getAge());
+		
 		assertTrue(engStudent.getUsername().equals(engStudentName + engStudentAge), "Eng Student username was not equal to name and age concatenated");
 		assertTrue(compSciStudent.getUsername().equals(ITStudentName + ITStudentAge), "IT Student username was not equal to name and age concatenated");
 
 	}
 	
+	@Test
+	public void testStudentComponents() {
+		
+		assertTrue(engStudent.getName().equals(engStudentName));
+		assertTrue(compSciStudent.getName().equals(ITStudentName));
+		
+		assertEquals(engStudentAge, engStudent.getAge());
+		assertEquals(ITStudentAge, compSciStudent.getAge());
+		
+		assertTrue(engStudent.getDOB().equals(engStudentDoB));
+		assertTrue(compSciStudent.getDOB().equals(engStudentDoB));
+		
+		assertEquals(engStudentID, engStudent.getID());
+		assertEquals(ITStudentID, compSciStudent.getID());
+		
+		assertTrue(engStudent.getCourse().equals(engStudentCourse));
+		assertTrue(compSciStudent.getCourse().equals(ITStudentCourse));
+		
+		assertTrue(engStudent.getModuleRegisteredFor().equals(engStudentModule));
+		assertTrue(compSciStudent.getModuleRegisteredFor().equals(ITStudentModule));
+		
+		
+		
+		
+	}
+	@Test
+	public void testStudentEnrollment() {
+		
+		assertTrue(engStudent.getModuleRegisteredFor().equals("EE453"), "Eng Student should be enrolled in Telecomms Module");
+	    assertTrue(compSciStudent.getModuleRegisteredFor().equals("CT417"), "IT Student should be enrolled in Telecomms Module");
+}
 	
 
 }
